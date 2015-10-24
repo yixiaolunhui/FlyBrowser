@@ -25,7 +25,7 @@ public class StickyScrollViewGlobalLayoutListener implements OnGlobalLayoutListe
 
     @Override
     public void onGlobalLayout() {
-        mCallbacks.onScroll(0,0,0,0);
+        mCallbacks.onScrollChanged();
     }
 
 }

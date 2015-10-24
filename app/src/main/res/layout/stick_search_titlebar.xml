@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Fly Browser"
+            android:text="@string/search_input_hit"
             android:id="@+id/logo_name_one"
             android:gravity="center_vertical"
             android:layout_gravity="center_vertical"
@@ -33,7 +33,7 @@
             android:layout_marginBottom="@dimen/logo_size_magin_top"
             android:textSize="@dimen/logo_text_size"
             android:background="@color/titlebar_color"
-            android:textColor="@null"
+            android:textColor="@android:color/white"
             android:paddingLeft="10dip"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/logo" />
@@ -43,6 +43,7 @@
     android:id="@+id/stick_titlebar_two"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@android:color/white"
+    android:visibility="visible"
     >
 
     <ImageView
@@ -60,7 +61,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Fly Browser"
+        android:text="@string/search_input_hit"
         android:id="@+id/logo_name_two"
         android:gravity="center_vertical"
         android:layout_gravity="center_vertical"
@@ -70,7 +71,7 @@
         android:layout_marginBottom="@dimen/logo_size_magin_top"
         android:textSize="@dimen/logo_text_size"
         android:background="@color/titlebar_color"
-        android:textColor="@android:color/black"
+        android:textColor="@color/titlebar_color_gray"
         android:paddingLeft="10dip"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/logo" />

@@ -40,4 +40,5 @@
     <string name="action_new_tab">New Tab</string>
     <string name="action_history">History</string>
     <string name="home">Homepage</string>
+    <string name="search_input_hit">Search or Type URL</string>
 </resources>

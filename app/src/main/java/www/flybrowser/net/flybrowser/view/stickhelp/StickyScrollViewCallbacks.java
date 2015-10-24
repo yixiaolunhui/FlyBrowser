@@ -13,6 +13,7 @@ import android.view.View;
 
 import www.flybrowser.net.flybrowser.view.OverScrollView;
 import www.flybrowser.net.flybrowser.view.StickFrameLayout;
+import www.flybrowser.net.flybrowser.view.StickyScrollView;
 
 /**
  * <p>
@@ -22,7 +23,7 @@ import www.flybrowser.net.flybrowser.view.StickFrameLayout;
  * 
  * @author likebamboo
  */
-public class StickyScrollViewCallbacks implements OverScrollView.OnScrollListener {
+public class StickyScrollViewCallbacks implements StickyScrollView.Callbacks {
     private static final float CLICK_DISTANCE = 3;
 
     /**
@@ -38,7 +39,7 @@ public class StickyScrollViewCallbacks implements OverScrollView.OnScrollListene
     /**
      * ScrollView控件
      */
-    private OverScrollView mObservableScrollView = null;
+    private StickyScrollView mObservableScrollView = null;
 
     /**
      * 悬停控件的临界控件【非必须】，如果设置了该控件，当ScrollView滚动到该控件时，悬停控件会被这个控件顶出界面。
@@ -61,12 +62,12 @@ public class StickyScrollViewCallbacks implements OverScrollView.OnScrollListene
     private float mScrollDistanceY = 0F;
 
     public StickyScrollViewCallbacks(StickFrameLayout stickyView, View placeholderView,
-                                     OverScrollView observableScrollView) {
+                                     StickyScrollView observableScrollView) {
         this(stickyView, placeholderView, null, observableScrollView);
     }
 
     public StickyScrollViewCallbacks(StickFrameLayout stickyView, View placeholderView, View endView,
-                                     OverScrollView observableScrollView) {
+                                     StickyScrollView observableScrollView) {
         this.mStickyView = stickyView;
         this.mPlaceholderView = placeholderView;
         this.mObservableScrollView = observableScrollView;
@@ -113,7 +114,7 @@ public class StickyScrollViewCallbacks implements OverScrollView.OnScrollListene
     }
 
     @Override
-    public void onScroll(int l, int t, int oldl, int oldt) {
+    public void onScrollChanged() {
         // 首先计算移动的距离
         int translationY = calTranslationY(mEnableSticky);
         // 移动
@@ -164,7 +165,7 @@ public class StickyScrollViewCallbacks implements OverScrollView.OnScrollListene
      */
     public void setEnableSticky(boolean enable) {
         mEnableSticky = enable;
-        onScroll(0, 0, 0, 0);
+        onScrollChanged();
     }
 
     /**

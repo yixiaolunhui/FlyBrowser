@@ -9,11 +9,10 @@ import android.view.View;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
-import android.widget.FrameLayout;
 
 import www.flybrowser.net.flybrowser.controller.BrowserController;
-import www.flybrowser.net.flybrowser.view.OverScrollView;
 import www.flybrowser.net.flybrowser.view.StickFrameLayout;
+import www.flybrowser.net.flybrowser.view.StickyScrollView;
 import www.flybrowser.net.flybrowser.view.stickhelp.StickyScrollViewCallbacks;
 import www.flybrowser.net.flybrowser.view.stickhelp.StickyScrollViewGlobalLayoutListener;
 import www.flybrowser.net.flybrowser.webview.LightningView;
@@ -23,7 +22,7 @@ import www.flybrowser.net.flybrowser.webview.LightningView;
  */
 public class BrowserActivity extends AppCompatActivity implements BrowserController{
 
-    private OverScrollView browser_scrollview_layout;
+    private StickyScrollView browser_scrollview_layout;
     //顶部stick titlebar
     private StickFrameLayout top_titlerbar_layout;
 
@@ -48,13 +47,14 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         titlebar_hight=getResources().getDimensionPixelSize(R.dimen.titlebar_hight);
         max_scrolly=head_hight-titlebar_hight;
         top_titlerbar_layout.setMaxScroll(max_scrolly);
+        browser_scrollview_layout.setMaxScroll(max_scrolly);
+
     }
 
     private void findView() {
-        browser_scrollview_layout=(OverScrollView)findViewById(R.id.browser_scrollview_layout);
+        browser_scrollview_layout=(StickyScrollView)findViewById(R.id.browser_scrollview_layout);
 
-        browser_scrollview_layout.setOverScroll(false);
-        browser_scrollview_layout.setUseInertance(false);
+
         top_titlerbar_layout=(StickFrameLayout)findViewById(R.id.top_titlerbar_layout);
 
         browser_scrollview_head_search_bar=findViewById(R.id.browser_scrollview_head_search_bar);
@@ -62,16 +62,13 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         mCallbacks = new StickyScrollViewCallbacks(top_titlerbar_layout, browser_scrollview_head_search_bar,
                 null, browser_scrollview_layout);
         mCallbacks.setEnableSticky(true);
-        browser_scrollview_layout.setOnScrollListener(mCallbacks);
+        browser_scrollview_layout.addCallbacks(mCallbacks);
         browser_scrollview_layout.getViewTreeObserver().addOnGlobalLayoutListener(
                 new StickyScrollViewGlobalLayoutListener(mCallbacks));
+        top_titlerbar_layout.setScrollView(browser_scrollview_layout);
     }
 
 
-    //处理stick
-    public void stick(int scrollY){
-
-    }
 
     @Override
     public void updateUrl(String title, boolean shortUrl) {

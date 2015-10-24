@@ -2,7 +2,7 @@
  * Copyright 2014 A.C.R. Development
  */
 
-package www.flybrowser.net.flybrowser.view;
+package www.flybrowser.net.flybrowser.webview;
 
 import android.Manifest;
 import android.annotation.SuppressLint;

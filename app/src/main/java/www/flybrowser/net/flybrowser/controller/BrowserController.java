@@ -11,7 +11,7 @@ import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient.CustomViewCallback;
 import android.webkit.WebView;
 
-import www.flybrowser.net.flybrowser.view.LightningView;
+import www.flybrowser.net.flybrowser.webview.LightningView;
 
 public interface BrowserController {
 

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+<dimen name="titlebar_hight">136px</dimen>
+    <dimen name="browser_scrollview_head_fl_hight">500px</dimen>
 </resources>

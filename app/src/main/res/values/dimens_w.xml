@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="logo_size">76px</dimen>
+    <dimen name="logo_size_magin_left">40px</dimen>
+    <dimen name="logo_name_size">40px</dimen>
+    <dimen name="logo_size_magin_top">20px</dimen>
+    <dimen name="logo_text_size">30px</dimen>
+
 </resources>

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="www.flybrowser.net.flybrowser.MainActivity">
+    tools:context="www.flybrowser.net.flybrowser.MainActivity"
+    android:id="@+id/main_container">
 
     <!-- 滚动内容！-->
     <include android:id="@+id/browser_scrollview_layout" layout="@layout/browser_scrollview" ></include>

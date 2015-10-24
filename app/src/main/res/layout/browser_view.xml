@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<www.flybrowser.net.flybrowser.view.FlyBrowserView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <www.flybrowser.net.flybrowser.view.WebViewContainter
+        android:id="@+id/webview_containter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/titlebar_hight" />
+
+            <WebView
+                android:id="@+id/mWebView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+    </www.flybrowser.net.flybrowser.view.WebViewContainter>
+
+
+    <FrameLayout
+        android:id="@+id/webview_titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_hight"
+        android:background="@android:color/white"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/logo_webview"
+            android:layout_width="@dimen/logo_size"
+            android:layout_height="@dimen/logo_size"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginEnd="@dimen/logo_size_magin_left"
+            android:layout_marginStart="@dimen/logo_size_magin_left"
+            android:paddingRight="10dip"
+            android:src="@mipmap/search_voice2" />
+
+        <TextView
+            android:id="@+id/logo_name_webview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/logo_size_magin_top"
+            android:layout_marginEnd="@dimen/logo_size_magin_left"
+            android:layout_marginStart="@dimen/logo_size_magin_left"
+            android:layout_marginTop="@dimen/logo_size_magin_top"
+            android:layout_toEndOf="@+id/logo_webview"
+            android:background="@color/titlebar_color"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dip"
+            android:text="@string/search_input_hit"
+            android:textColor="@color/titlebar_color_gray"
+            android:textSize="@dimen/logo_text_size" />
+    </FrameLayout>
+
+
+</www.flybrowser.net.flybrowser.view.FlyBrowserView>

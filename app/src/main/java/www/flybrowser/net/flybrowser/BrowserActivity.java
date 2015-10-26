@@ -13,7 +13,7 @@ import android.webkit.WebView;
 import android.widget.FrameLayout;
 
 import www.flybrowser.net.flybrowser.controller.BrowserController;
-import www.flybrowser.net.flybrowser.view.FlyBrowserView;
+import www.flybrowser.net.flybrowser.webview.FlyBrowserView;
 import www.flybrowser.net.flybrowser.view.StickFrameLayout;
 import www.flybrowser.net.flybrowser.view.StickyScrollView;
 import www.flybrowser.net.flybrowser.view.stickhelp.StickyScrollViewCallbacks;

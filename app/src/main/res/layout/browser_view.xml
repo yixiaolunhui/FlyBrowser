@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<www.flybrowser.net.flybrowser.view.FlyBrowserView xmlns:android="http://schemas.android.com/apk/res/android"
+<www.flybrowser.net.flybrowser.webview.FlyBrowserView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -66,4 +66,4 @@
     </FrameLayout>
 
 
-</www.flybrowser.net.flybrowser.view.FlyBrowserView>
+</www.flybrowser.net.flybrowser.webview.FlyBrowserView>

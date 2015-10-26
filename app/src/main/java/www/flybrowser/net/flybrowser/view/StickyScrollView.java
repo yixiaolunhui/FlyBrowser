@@ -1,13 +1,4 @@
-/**
- * StickyScrollView.java
- * StickyScrollView
- * <p/>
- * Created by likebamboo on 2014-4-21
- * Copyright (c) 1998-2014 https://github.com/likebamboo All rights reserved.
- */
-
 package www.flybrowser.net.flybrowser.view;
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -31,12 +22,7 @@ public class StickyScrollView extends ScrollView {
         halfScrollY = maxScrollY / 2;
     }
 
-    /**
-     * <p>
-     * 复写onInterceptTouchEvent是用来解决ScrollView与ViewPager之前滚动事件冲突的，
-     * <p>
-     * 实际项目可根据需要选择是否需要这段代码
-     */
+
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
 

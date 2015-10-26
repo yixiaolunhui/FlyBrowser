@@ -1,5 +1,6 @@
 package www.flybrowser.net.flybrowser;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,17 +14,18 @@ import android.webkit.WebView;
 import android.widget.FrameLayout;
 
 import www.flybrowser.net.flybrowser.controller.BrowserController;
-import www.flybrowser.net.flybrowser.webview.FlyBrowserView;
+import www.flybrowser.net.flybrowser.view.SearchFrameLayout;
 import www.flybrowser.net.flybrowser.view.StickFrameLayout;
 import www.flybrowser.net.flybrowser.view.StickyScrollView;
 import www.flybrowser.net.flybrowser.view.stickhelp.StickyScrollViewCallbacks;
 import www.flybrowser.net.flybrowser.view.stickhelp.StickyScrollViewGlobalLayoutListener;
+import www.flybrowser.net.flybrowser.webview.FlyBrowserView;
 import www.flybrowser.net.flybrowser.webview.FlyingView;
 
 /**
  * Created by ferris on 2015/10/23.
  */
-public class BrowserActivity extends AppCompatActivity implements BrowserController{
+public abstract class BrowserActivity extends AppCompatActivity implements BrowserController{
 
     private StickyScrollView browser_scrollview_layout;
     private StickFrameLayout top_titlerbar_layout;
@@ -47,7 +49,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         max_scrolly=head_hight-titlebar_hight;
         top_titlerbar_layout.setMaxScroll(max_scrolly);
         browser_scrollview_layout.setMaxScroll(max_scrolly);
-
     }
 
     private void findView() {
@@ -69,15 +70,45 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             @Override
             public void run() {
 
-                FlyingView mFlyingView =new FlyingView(BrowserActivity.this,"http://www.qq.com/",false,false,BrowserActivity.this);
+                FlyingView mFlyingView = new FlyingView(BrowserActivity.this, "http://www.baidu.com", false, false, BrowserActivity.this);
 
                 main_container.addView(mFlyingView.getBrowserView());
 
             }
-        },2000);
+        }, 2000);
+    }
+    public abstract boolean isIncognito();
+    public abstract void updateCookiePreference();
+    public abstract void closeActivity();
+
+
+    public void openSearch(){
+        main_container.addView(SearchFrameLayout.getXml(this));
     }
 
+    public void handleNewIntent(Intent intent) {
 
+        String url = null;
+        if (intent != null) {
+            url = intent.getDataString();
+        }
+        int num = 0;
+        String source = null;
+        if (intent != null && intent.getExtras() != null) {
+            num = intent.getExtras().getInt(getPackageName() + ".Origin");
+            source = intent.getExtras().getString("SOURCE");
+        }
+//        if (num == 1) {
+//            loadUrlInCurrentView(url);
+//        } else if (url != null) {
+//            if (url.startsWith(Constants.FILE)) {
+//                Utils.showSnackbar(this, R.string.message_blocked_local);
+//                url = null;
+//            }
+//            newTab(url, true);
+//            mIsNewIntent = (source == null);
+//        }
+    }
 
     @Override
     public void updateUrl(String title, boolean shortUrl) {
@@ -178,6 +209,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode==KeyEvent.KEYCODE_BACK){
             for(int i=0;i<main_container.getChildCount();i++){
+                if(main_container.getChildAt(i) instanceof SearchFrameLayout){
+                    main_container.removeViewAt(i);
+                    return true;
+                }
                 if(main_container.getChildAt(i) instanceof FlyBrowserView){
                     main_container.removeViewAt(i);
                     return true;
@@ -185,5 +220,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             }
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

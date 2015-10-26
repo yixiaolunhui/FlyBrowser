@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import www.flybrowser.net.flybrowser.MainActivity;
 import www.flybrowser.net.flybrowser.R;
 
 /**
@@ -47,7 +48,16 @@ public class StickFrameLayout extends FrameLayout{
         stick_titlebar_one.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"dd",Toast.LENGTH_SHORT).show();
+                if(msStickyScrollView!=null){
+                    msStickyScrollView.scrolltoUp();
+                    msStickyScrollView.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            ((MainActivity)getContext()).openSearch();
+                        }
+                    });
+                }
+
             }
         });
     }

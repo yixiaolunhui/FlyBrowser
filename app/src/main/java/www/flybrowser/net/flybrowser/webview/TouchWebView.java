@@ -2,6 +2,7 @@ package www.flybrowser.net.flybrowser.webview;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 
@@ -55,17 +56,20 @@ public class TouchWebView extends TitleBarWebView{
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
             int scrollY = getScrollY();
-            if (scrollY < titlebar_hight) {
+            if (scrollY <= titlebar_hight) {
                 mCallbacks.onScrollChanged();
-            } else {
-                if (distanceY > 0) {
-                    mCallbacks.onScrollUp();
-                } else if (distanceY < 0) {
-                    mCallbacks.onScrollDown();
-                }
-
             }
             return super.onScroll(e1, e2, distanceX, distanceY);
+        }
+
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            if(velocityY<0){
+                mCallbacks.onScrollUp();
+            }else if(velocityY>0){
+                mCallbacks.onScrollDown();
+            }
+            return super.onFling(e1, e2, velocityX, velocityY);
         }
     }
 

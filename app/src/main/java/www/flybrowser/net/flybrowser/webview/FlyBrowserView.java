@@ -79,7 +79,7 @@ public class FlyBrowserView extends FrameLayout implements TouchWebView.WebViewS
     }
 
     private void startAnimation(View view, int translationY) {
-        ViewPropertyAnimator.animate(view).cancel();
+//        ViewPropertyAnimator.animate(view).cancel();
 
         ViewPropertyAnimator.animate(view).translationY(translationY);
     }

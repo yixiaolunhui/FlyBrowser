@@ -4,11 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="www.flybrowser.net.flybrowser.MainActivity"
-    android:id="@+id/main_container">
-
+>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main_container"
+    android:layout_marginBottom="@dimen/titlebar_hight">
     <!-- 滚动内容！-->
     <include android:id="@+id/browser_scrollview_layout" layout="@layout/browser_scrollview" ></include>
     <!-- 放在最顶层 固定搜索！-->
     <include android:id="@+id/top_titlerbar_layout" layout="@layout/stick_search_titlebar" ></include>
-
+</FrameLayout>
+    <include android:id="@+id/buttom_titlerbar_layout" layout="@layout/buttombar" ></include>
 </FrameLayout>

@@ -200,6 +200,12 @@ public abstract class BrowserActivity extends AppCompatActivity implements Brows
 
     }
 
+    public void search(String text){
+        FlyingView mFlyingView = new FlyingView(BrowserActivity.this, text, false, false, BrowserActivity.this);
+
+        main_container.addView(mFlyingView.getBrowserView());
+    }
+
     @Override
     public boolean proxyIsNotReady() {
         return false;

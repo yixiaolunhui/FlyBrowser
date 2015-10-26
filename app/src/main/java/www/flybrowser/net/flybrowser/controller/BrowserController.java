@@ -11,7 +11,7 @@ import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient.CustomViewCallback;
 import android.webkit.WebView;
 
-import www.flybrowser.net.flybrowser.webview.LightningView;
+import www.flybrowser.net.flybrowser.webview.FlyingView;
 
 public interface BrowserController {
 
@@ -37,7 +37,7 @@ public interface BrowserController {
 
     void onCreateWindow(Message resultMsg);
 
-    void onCloseWindow(LightningView view);
+    void onCloseWindow(FlyingView view);
 
     void hideActionBar();
 

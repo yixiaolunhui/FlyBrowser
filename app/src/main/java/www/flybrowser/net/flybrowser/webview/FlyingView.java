@@ -70,7 +70,7 @@ import www.flybrowser.net.flybrowser.utils.PermissionsManager;
 import www.flybrowser.net.flybrowser.utils.ThemeUtils;
 import www.flybrowser.net.flybrowser.utils.Utils;
 
-public class LightningView {
+public class FlyingView {
 
     private final Title mTitle;
     private WebView mWebView;
@@ -104,12 +104,15 @@ public class LightningView {
 
     private FlyBrowserView mFlyBrowserView;
     @SuppressLint("NewApi")
-    public LightningView(Activity activity, String url, boolean darkTheme, boolean isIncognito, BrowserController controller) {
+    public FlyingView(Activity activity, String url, boolean darkTheme, boolean isIncognito, BrowserController controller) {
 
         mActivity = activity;
         //
         mFlyBrowserView=FlyBrowserView.getXml(activity);
         mWebView = mFlyBrowserView.getWebView();
+
+
+
         mIsIncognitoTab = isIncognito;
         mTitle = new Title(activity, darkTheme);
         mAdBlock = AdBlock.getInstance(activity.getApplicationContext());
@@ -122,6 +125,7 @@ public class LightningView {
         mBrowserController = controller;
 
         mIntentUtils = new IntentUtils(mActivity);
+
         mWebView.setDrawingCacheBackgroundColor(Color.WHITE);
         mWebView.setFocusableInTouchMode(true);
         mWebView.setFocusable(true);
@@ -141,14 +145,15 @@ public class LightningView {
         mWebView.setWebChromeClient(new LightningChromeClient(activity));
         mWebView.setWebViewClient(new LightningWebClient(activity));
         mWebView.setDownloadListener(new LightningDownloadListener(activity));
+
         mGestureDetector = new GestureDetector(activity, new CustomGestureListener());
         mWebView.setOnTouchListener(new TouchListener());
         mDefaultUserAgent = mWebView.getSettings().getUserAgentString();
         initializeSettings(mWebView.getSettings(), activity);
         initializePreferences(mWebView.getSettings(), activity);
-
         if (url != null) {
             if (!url.trim().isEmpty()) {
+
                 mWebView.loadUrl(url);
             } else {
                 // don't load anything, the user is looking for a blank tab
@@ -157,6 +162,7 @@ public class LightningView {
             loadHomepage();
         }
     }
+
 
     public void loadHomepage() {
         if (mWebView == null) {
@@ -293,6 +299,8 @@ public class LightningView {
             CookieManager.getInstance().setAcceptThirdPartyCookies(mWebView,
                     !mPreferences.getBlockThirdPartyCookiesEnabled());
         }
+
+
     }
 
     /**
@@ -688,6 +696,9 @@ public class LightningView {
         @SuppressLint("NewApi")
         @Override
         public void onPageFinished(WebView view, String url) {
+
+
+
             if (view.isShown()) {
                 mBrowserController.updateUrl(url, true);
                 view.postInvalidate();
@@ -989,7 +1000,7 @@ public class LightningView {
 
         @Override
         public void onCloseWindow(WebView window) {
-            mBrowserController.onCloseWindow(LightningView.this);
+            mBrowserController.onCloseWindow(FlyingView.this);
         }
 
         @SuppressWarnings("unused")

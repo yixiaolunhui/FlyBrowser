@@ -1,31 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <www.flybrowser.net.flybrowser.webview.FlyBrowserView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
 
-    <www.flybrowser.net.flybrowser.view.WebViewContainter
-        android:id="@+id/webview_containter"
+
+    <www.flybrowser.net.flybrowser.webview.TouchWebView
+        android:id="@+id/mWebView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/titlebar_hight" />
-
-            <WebView
-                android:id="@+id/mWebView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-
-    </www.flybrowser.net.flybrowser.view.WebViewContainter>
-
+        android:layout_height="match_parent" />
 
     <FrameLayout
         android:id="@+id/webview_titlebar"

@@ -18,7 +18,7 @@ import www.flybrowser.net.flybrowser.view.StickFrameLayout;
 import www.flybrowser.net.flybrowser.view.StickyScrollView;
 import www.flybrowser.net.flybrowser.view.stickhelp.StickyScrollViewCallbacks;
 import www.flybrowser.net.flybrowser.view.stickhelp.StickyScrollViewGlobalLayoutListener;
-import www.flybrowser.net.flybrowser.webview.LightningView;
+import www.flybrowser.net.flybrowser.webview.FlyingView;
 
 /**
  * Created by ferris on 2015/10/23.
@@ -69,9 +69,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             @Override
             public void run() {
 
-                LightningView mLightningView=new LightningView(BrowserActivity.this,"http://www.sina.com.cn/",false,false,BrowserActivity.this);
+                FlyingView mFlyingView =new FlyingView(BrowserActivity.this,"http://www.qq.com/",false,false,BrowserActivity.this);
 
-                main_container.addView(mLightningView.getBrowserView());
+                main_container.addView(mFlyingView.getBrowserView());
 
             }
         },2000);
@@ -135,7 +135,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     }
 
     @Override
-    public void onCloseWindow(LightningView view) {
+    public void onCloseWindow(FlyingView view) {
 
     }
 

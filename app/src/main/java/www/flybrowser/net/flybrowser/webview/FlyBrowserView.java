@@ -23,13 +23,10 @@ import www.flybrowser.net.flybrowser.view.stickhelp.ViewHelper;
  * Created by ferris on 2015/10/24.
  */
 public class FlyBrowserView extends FrameLayout implements WebViewContainter.WebViewScrollCallbacks{
-
     private WebView mWebView;
     private WebViewContainter mWebViewContainter;
     private FrameLayout webview_titlebar;
     private int titlebar_hight=0;
-    private  IntentUtils mIntentUtils;
-
     public FlyBrowserView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
         init();
@@ -57,25 +54,6 @@ public class FlyBrowserView extends FrameLayout implements WebViewContainter.Web
         mWebViewContainter=(WebViewContainter)findViewById(R.id.webview_containter);
         webview_titlebar=(FrameLayout)findViewById(R.id.webview_titlebar);
         mWebView=(WebView)findViewById(R.id.mWebView);
-        mIntentUtils = new IntentUtils((Activity)getContext());
-        mWebView.setWebViewClient(new LightningChromeClient());
-
-        WebSettings settings = mWebView.getSettings();
-        mWebView.getSettings().setUserAgentString(Constants.DESKTOP_USER_AGENT);
-
-        mWebView.getSettings().setJavaScriptEnabled(true);
-// 设置可以支持缩放
-        mWebView.getSettings().setSupportZoom(true);
-// 设置出现缩放工具
-        mWebView.getSettings().setBuiltInZoomControls(true);
-//扩大比例的缩放
-        mWebView.getSettings().setUseWideViewPort(true);
-//自适应屏幕
-        mWebView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-        mWebView.getSettings().setLoadWithOverviewMode(true);
-
-
-        mWebView.loadUrl("http://www.sina.com.cn/");
         mWebViewContainter.addCallbacks(this);
     }
 
@@ -101,16 +79,9 @@ public class FlyBrowserView extends FrameLayout implements WebViewContainter.Web
         ViewPropertyAnimator.animate(view).translationY(translationY);
     }
 
-    public class LightningChromeClient extends WebViewClient {
-
-
-        LightningChromeClient() {
-
-        }
-
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            return mIntentUtils.startActivityForUrl(mWebView, url);
-        }
+    public WebView getWebView() {
+        return mWebView;
     }
+
+
 }

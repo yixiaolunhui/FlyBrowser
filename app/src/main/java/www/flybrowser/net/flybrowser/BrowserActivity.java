@@ -68,7 +68,11 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         main_container.postDelayed(new Runnable() {
             @Override
             public void run() {
-                main_container.addView(FlyBrowserView.getXml(BrowserActivity.this));
+
+                LightningView mLightningView=new LightningView(BrowserActivity.this,"http://www.sina.com.cn/",false,false,BrowserActivity.this);
+
+                main_container.addView(mLightningView.getBrowserView());
+
             }
         },2000);
     }

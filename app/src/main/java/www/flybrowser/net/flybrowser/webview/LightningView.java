@@ -102,11 +102,14 @@ public class LightningView {
     private final PermissionsManager mPermissionsManager;
     private static final String[] PERMISSIONS = new String[]{Manifest.permission.ACCESS_FINE_LOCATION};
 
+    private FlyBrowserView mFlyBrowserView;
     @SuppressLint("NewApi")
     public LightningView(Activity activity, String url, boolean darkTheme, boolean isIncognito, BrowserController controller) {
 
         mActivity = activity;
-        mWebView = new WebView(activity);
+        //
+        mFlyBrowserView=FlyBrowserView.getXml(activity);
+        mWebView = mFlyBrowserView.getWebView();
         mIsIncognitoTab = isIncognito;
         mTitle = new Title(activity, darkTheme);
         mAdBlock = AdBlock.getInstance(activity.getApplicationContext());
@@ -590,6 +593,11 @@ public class LightningView {
     @Nullable
     public WebView getWebView() {
         return mWebView;
+    }
+
+    @Nullable
+    public FlyBrowserView getBrowserView () {
+        return mFlyBrowserView;
     }
 
     public Bitmap getFavicon() {
